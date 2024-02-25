@@ -108,7 +108,7 @@ WSGI_APPLICATION = 'delivery.wsgi.application'
 
 # }
 DATABASES_URL = os.environ.get('DATABASE_URLS')
-DATABASES[default] = dj_database_url.parse(DATABASES_URL)
+DATABASES['default'] = dj_database_url.parse(DATABASES_URL)
 
 
 # Password validation
