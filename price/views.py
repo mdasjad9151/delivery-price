@@ -58,23 +58,29 @@ def create_organization(request):
 # @api_view(['POST'])
 @csrf_exempt
 def create_item(request):
-    json_data =  request.body
-    stream = io.BytesIO(json_data)
-    python_data = JSONParser().parse(stream=stream)
-    serializer = ItemSerializer(data=python_data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=201)
-    return Response(serializer.errors, status=400)
+    if request.method == 'POST':
+        json_data =  request.body
+        stream = io.BytesIO(json_data)
+        python_data = JSONParser().parse(stream=stream)
+        serializer = ItemSerializer(data=python_data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+    else:
+        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
 
 # @api_view(['POST'])
 @csrf_exempt
 def create_pricing(request):
-    json_data =  request.body
-    stream = io.BytesIO(json_data)
-    python_data = JSONParser().parse(stream=stream)
-    serializer = PricingSerializer(data=python_data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=201)
-    return Response(serializer.errors, status=400)
+    if request.method == 'POST':
+        json_data =  request.body
+        stream = io.BytesIO(json_data)
+        python_data = JSONParser().parse(stream=stream)
+        serializer = PricingSerializer(data=python_data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+    else:
+        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
