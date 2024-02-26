@@ -4,7 +4,9 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
 from  django.views.decorators.csrf import csrf_exempt
 from .pricing import PricingService
-from .serializers import PricingRequestSerializer,PricingResponseSerializer
+from .serializers import PricingRequestSerializer,PricingResponseSerializer, OrganizationSerializer, ItemSerializer, PricingSerializer
+
+
 
 # Create your views here.
 
@@ -35,3 +37,29 @@ def calculate_delivery_price(request):
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
     # return HttpResponse("HII")
+
+
+
+@api_view(['POST'])
+def create_organization(request):
+    serializer = OrganizationSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def create_item(request):
+    serializer = ItemSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def create_pricing(request):
+    serializer = PricingSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

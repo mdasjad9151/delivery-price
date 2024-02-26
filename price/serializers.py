@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from .models import Organization, Item, Pricing
 
 class PricingRequestSerializer(serializers.Serializer):
     zone = serializers.CharField(max_length=100)
@@ -8,3 +9,22 @@ class PricingRequestSerializer(serializers.Serializer):
 
 class PricingResponseSerializer(serializers.Serializer):
     total_price = serializers.FloatField()
+
+
+
+# instance create.
+
+class OrganizationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Organization
+        fields = '__all__'
+
+class ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        fields = '__all__'
+
+class PricingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pricing
+        fields = '__all__'
