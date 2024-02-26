@@ -86,16 +86,3 @@ def create_pricing(request):
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
 
-
-
-def orgdata(request):
-    data =  Item.objects.all()
-    return HttpResponse(data)
-
-def itemdata(request):
-    data =  Item.objects.all()
-    return HttpResponse(data)
-
-def pricingdata(request):
-    data =  Pricing.objects.all()
-    return HttpResponse(data)
