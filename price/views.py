@@ -49,7 +49,7 @@ def create_organization(request):
     serializer = OrganizationSerializer(data=python_data)
     if serializer.is_valid():
         serializer.save()
-        return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.data, status=200)
     return JsonResponse(serializer.errors, status=400)
 
 # @api_view(['POST'])
