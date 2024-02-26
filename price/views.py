@@ -43,14 +43,17 @@ def calculate_delivery_price(request):
 # @api_view(['POST'])
 @csrf_exempt
 def create_organization(request):
-    json_data =  request.body
-    stream = io.BytesIO(json_data)
-    python_data = JSONParser().parse(stream=stream)
-    serializer = OrganizationSerializer(data=python_data)
-    if serializer.is_valid():
-        serializer.save()
-        return JsonResponse(serializer.data, status=200)
-    return JsonResponse(serializer.errors, status=400)
+    if request.method == 'POST':
+        json_data =  request.body
+        stream = io.BytesIO(json_data)
+        python_data = JSONParser().parse(stream=stream)
+        serializer = OrganizationSerializer(data=python_data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=200)
+        return JsonResponse(serializer.errors, status=400)
+    else:
+        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
 
 # @api_view(['POST'])
 @csrf_exempt
