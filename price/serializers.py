@@ -12,7 +12,6 @@ class PricingResponseSerializer(serializers.Serializer):
 
 
 
-# instance create.
 
 class OrganizationSerializer(serializers.ModelSerializer):
     class Meta:
