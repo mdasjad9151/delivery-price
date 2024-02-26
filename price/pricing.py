@@ -5,13 +5,13 @@ class PricingService:
     @staticmethod
     def calculate_total_price(zone, organization_id, total_distance, item_type):
         # Get pricing information based on zone and organization_id.
-        try:
-            pricing_info = Pricing.objects.filter(
-                organization_id=organization_id,
-                zone=zone
-            ).first()
-        except:
-            return None
+        # try:
+        #     pricing_info = Pricing.objects.filter(
+        #         organization_id=organization_id,
+        #         zone=zone
+        #     ).first()
+        # except:
+        #     return None
         if item_type == 'perishable':
             if pricing_info:
             # Extract pricing details
