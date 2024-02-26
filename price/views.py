@@ -40,7 +40,8 @@ def calculate_delivery_price(request):
 
 
 
-@api_view(['POST'])
+# @api_view(['POST'])
+@csrf_exempt
 def create_organization(request):
     serializer = OrganizationSerializer(data=request.data)
     if serializer.is_valid():
@@ -48,7 +49,8 @@ def create_organization(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['POST'])
+# @api_view(['POST'])
+@csrf_exempt
 def create_item(request):
     serializer = ItemSerializer(data=request.data)
     if serializer.is_valid():
@@ -56,7 +58,8 @@ def create_item(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['POST'])
+# @api_view(['POST'])
+@csrf_exempt
 def create_pricing(request):
     serializer = PricingSerializer(data=request.data)
     if serializer.is_valid():
