@@ -8,7 +8,7 @@ from .serializers import PricingRequestSerializer,PricingResponseSerializer
 
 # Create your views here.
 
-@api_view(['POST'])
+# @api_view(['POST'])
 # @csrf_exempt
 def calculate_delivery_price(request):
     # if request.method == 'POST':
