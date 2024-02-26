@@ -12,9 +12,9 @@ from .models import Organization,Item,Pricing
 # Create your views here.
 
 # @api_view(['POST'])
-@csrf_exempt
+# @csrf_exempt
 def calculate_delivery_price(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         json_data =  request.body
         stream = io.BytesIO(json_data)
         python_data = JSONParser().parse(stream=stream)
