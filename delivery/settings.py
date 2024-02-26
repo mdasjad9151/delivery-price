@@ -96,7 +96,9 @@ WSGI_APPLICATION = 'delivery.wsgi.application'
 
 # database_url = 'postgres://food_9mgw_user:z5Ue33VlObDrepT9oFTlYnkfhSeYxpDS@dpg-cncudiacn0vc73f447e0-a.oregon-postgres.render.com/food_9mgw'
 
-DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASE_URL'))
+DATABASES ={
+    'default': dj_database_url.parse(default=os.environ.get('DATABASE_URL'))
+} 
 
 
 # Password validation
