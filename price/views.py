@@ -26,18 +26,18 @@ def calculate_delivery_price(request):
             item_type = serializer.validated_data['item_type']
             
 
-            # total_price = PricingService.calculate_total_price(zone, organization_id, total_distance, item_type)
-            total_price = 20.0
+            total_price = PricingService.calculate_total_price(zone, organization_id, total_distance, item_type)
+            # total_price = 20.0
             if total_price is not None:
                 response_data = {'total_price': total_price}
                 response_serializer = PricingResponseSerializer(response_data)
                 return JsonResponse(response_serializer.data)
             else:
-                return JsonResponse({'error': 'Pricing information not found for the given parameters'}, status=400)
+                return JsonResponse({'error': 'Pricing information not found for the given parameters'})
         else:
-            return JsonResponse(serializer.errors, status=400)
+            return JsonResponse(serializer.errors)
     else:
-        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+        return JsonResponse({'error': 'Only POST requests are allowed'})
     # return HttpResponse("HII")
 
 
@@ -53,9 +53,9 @@ def create_organization(request):
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=200)
-        return JsonResponse(serializer.errors, status=400)
+        return JsonResponse(serializer.errors)
     else:
-        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+        return JsonResponse({'error': 'Only POST requests are allowed'})
 
 # @api_view(['POST'])
 @csrf_exempt
@@ -67,10 +67,10 @@ def create_item(request):
         serializer = ItemSerializer(data=python_data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+            return Response(serializer.data)
+        return Response(serializer.errors)
     else:
-        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+        return JsonResponse({'error': 'Only POST requests are allowed'})
 
 # @api_view(['POST'])
 @csrf_exempt
@@ -82,8 +82,8 @@ def create_pricing(request):
         serializer = PricingSerializer(data=python_data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+            return Response(serializer.data)
+        return Response(serializer.errors)
     else:
-        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+        return JsonResponse({'error': 'Only POST requests are allowed'})
 
