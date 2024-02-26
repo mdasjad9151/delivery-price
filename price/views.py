@@ -26,7 +26,8 @@ def calculate_delivery_price(request):
             item_type = serializer.validated_data['item_type']
             
 
-            total_price = PricingService.calculate_total_price(zone, organization_id, total_distance, item_type)
+            # total_price = PricingService.calculate_total_price(zone, organization_id, total_distance, item_type)
+            total_price = 20.0
             if total_price is not None:
                 response_data = {'total_price': total_price}
                 response_serializer = PricingResponseSerializer(response_data)
