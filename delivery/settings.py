@@ -35,8 +35,8 @@ DEBUG = True
 
 
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
-# ALLOWED_HOSTS = ['delivery-poje.onrender.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['delivery-poje.onrender.com']
+# ALLOWED_HOSTS = []
 
 
 # Application definition
