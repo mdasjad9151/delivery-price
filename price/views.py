@@ -5,6 +5,7 @@ from rest_framework.parsers import JSONParser
 from  django.views.decorators.csrf import csrf_exempt
 from .pricing import PricingService
 from .serializers import PricingRequestSerializer,PricingResponseSerializer, OrganizationSerializer, ItemSerializer, PricingSerializer
+from .models import Organization
 
 
 
@@ -84,3 +85,9 @@ def create_pricing(request):
         return Response(serializer.errors, status=400)
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+
+
+
+def c_o(request):
+    data =  Organization.objects.all()
+    return HttpResponse(data)
