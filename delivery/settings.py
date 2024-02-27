@@ -23,17 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
-# SECRET_KEY = '8f16d82dc9af421eea24e8151593284b'
-
-
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+# DEBUG = True
 
-# ALLOWED_HOSTS = os.environ.get().split(" ")
-ALLOWED_HOSTS = ['ALLOWED_HOSTS','localhost']
-# ALLOWED_HOSTS = ['localhost', 'delivery-poje.onrender.com']
+ALLOWED_HOSTS = ['localhost', 'delivery-poje.onrender.com']
 # ALLOWED_HOSTS = []
 
 
