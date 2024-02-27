@@ -31,9 +31,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 DEBUG = True
 
-# ALLOWED_HOSTS = os.environ.get().split(" ")
+ALLOWED_HOSTS = os.environ.get().split(" ")
 # ALLOWED_HOSTS = ['ALLOWED_HOSTS']
-ALLOWED_HOSTS = ['localhost', 'delivery-poje.onrender.com']
+# ALLOWED_HOSTS = ['localhost', 'delivery-poje.onrender.com']
 # ALLOWED_HOSTS = []
 
 
