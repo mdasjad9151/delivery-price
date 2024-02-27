@@ -115,6 +115,6 @@ def create_pricing(request):
 def data(request):
     org =  Organization.objects.all()
     item =  Item.objects.all()
-    price =  Pricing.objects.all()
-    return HttpResponse(org, item, price)
+    price =  Pricing.objects.filter(organization_id = '001').first()
+    return HttpResponse( price.fix_price)
 
