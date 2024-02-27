@@ -84,7 +84,6 @@ def create_item(request):
         stream = io.BytesIO(json_data)
         python_data = JSONParser().parse(stream=stream)
         serializer = ItemSerializer(data=python_data)
-        print(python_data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
@@ -97,24 +96,16 @@ def create_item(request):
 def create_pricing(request):
     if request.method == 'POST':
         json_data =  request.body
-        print(json_data)
         stream = io.BytesIO(json_data)
         python_data = JSONParser().parse(stream=stream)
         serializer = PricingSerializer(data=python_data)
-        print(serializer.is_valid())
 
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
         return JsonResponse(serializer.errors)
-    else:
-        print("HI")
-        return JsonResponse({'error': 'Only POST requests are allowed'})
-        # return HttpResponse('hi')
 
-def data(request):
-    org =  Organization.objects.all()
-    item =  Item.objects.all()
-    price =  Pricing.objects.filter(organization_id = '001').first()
-    return HttpResponse( price.fix_price)
+    else:
+        return JsonResponse({'error': 'Only POST requests are allowed'})
+
 
