@@ -35,7 +35,7 @@ def calculate_delivery_price(request):
                     ).first()
                 except:
                     return JsonResponse({'error': 'No Data Found'})
-                    
+
                 if pricing_info:
                     # Extract pricing details
                     base_distance = float(pricing_info.base_distance_in_km)
@@ -111,4 +111,10 @@ def create_pricing(request):
         print("HI")
         return JsonResponse({'error': 'Only POST requests are allowed'})
         # return HttpResponse('hi')
+
+def data(request):
+    org =  Organization.objects.all()
+    item =  Item.objects.all()
+    price =  Pricing.objects.all()
+    return HttpResponse(org, item, price)
 
