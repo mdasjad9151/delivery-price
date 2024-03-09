@@ -1,4 +1,5 @@
 import io
+from django.shortcuts import redirect
 from rest_framework.decorators import api_view
 from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
@@ -63,6 +64,8 @@ print('price added')
 create_pricing()
     '''})
 
+def home(request):
+    return redirect('index')
 @csrf_exempt
 def calculate_delivery_price(request):
     total_price = None
